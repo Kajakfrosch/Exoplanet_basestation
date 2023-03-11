@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="582faea9-4aa6-48d5-8c43-6d046f460b28" name="Changes" comment="Maven Bastionservice">
+    <list default="true" id="582faea9-4aa6-48d5-8c43-6d046f460b28" name="Changes" comment="Maven Bastionservice with Tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/Databasecon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/Databasecon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BasestationServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BasestationServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BasestationSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BasestationSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +46,33 @@
     "last_opened_file_path": "C:/Users/kajak/IdeaProjects/Exoplanet_basestation"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="All in Exoplanet_basestation" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Exoplanet_basestation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasestationSessionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Exoplanet_basestation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BasestationSessionTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BasestationSessionTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678533828457</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Maven Bastionservice with Tests">
+      <created>1678536860410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678536860410</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -75,10 +112,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Maven Bastionservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Maven Bastionservice" />
+    <MESSAGE value="Maven Bastionservice with Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Maven Bastionservice with Tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationSessionTest.ic" NAME="BasestationSessionTest Coverage Results" MODIFIED="1678536364154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationSessionTest.ic" NAME="BasestationSessionTest Coverage Results" MODIFIED="1678537108998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationServerTest.ic" NAME="BasestationServerTest Coverage Results" MODIFIED="1678536347360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Exoplanet_basestation$All_in_Exoplanet_basestation.ic" NAME="All in Exoplanet_basestation Coverage Results" MODIFIED="1678537625518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

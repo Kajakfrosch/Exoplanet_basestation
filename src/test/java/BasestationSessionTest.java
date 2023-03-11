@@ -24,11 +24,11 @@ public class BasestationSessionTest {
     @Before
     public void setUp() throws Exception {
 
-        clientSocket = new Socket("localhost", 9000);
+        clientSocket = new Socket("localhost", 1222);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         Databasecon data = new Databasecon();
-        session = new BasestationSession(in, out, clientSocket, data);
+        session = new BasestationSession(clientSocket, data);
         session.start();
     }
 

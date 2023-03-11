@@ -12,20 +12,20 @@ import java.net.Socket;
 
 public class BasestationServerTest {
 
-    private BasestationServer server;
-    private Thread serverThread;
+    private  BasestationServer fisch;
 
     @Before
-    public void setUp() {
-        server = new BasestationServer();
-        serverThread = new Thread(server::start);
-        serverThread.start();
+    public void setUp()  {
+        fisch = new BasestationServer();
+        fisch.start();
+
+
     }
 
     @After
     public void tearDown() {
-        server.stopAction();
-        serverThread.interrupt();
+
+        fisch.interrupt();
     }
 
     @Test

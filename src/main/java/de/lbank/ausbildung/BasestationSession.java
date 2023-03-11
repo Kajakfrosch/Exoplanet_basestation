@@ -2,6 +2,7 @@ package de.lbank.ausbildung;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -13,11 +14,12 @@ public class BasestationSession extends Thread{
     private BasestationSession t;
     private Databasecon data;
 
-    public BasestationSession(BufferedReader in, PrintWriter out, Socket s,  Databasecon data) {
-        this.in = in;
-        this.out = out;
+    public BasestationSession( Socket s,  Databasecon data) throws IOException {
+
         this.s = s;
         this.data = data;
+        in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        out = new PrintWriter(s.getOutputStream());
        t.start();
     }
 

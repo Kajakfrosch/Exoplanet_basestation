@@ -63,8 +63,7 @@ public class BasestationServer extends Thread {
             try {
                 ssock = new ServerSocket(port);
                 s = ssock.accept();
-                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                out = new PrintWriter(s.getOutputStream());
+
                 data = new Databasecon();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -77,8 +76,8 @@ public class BasestationServer extends Thread {
                     System.out.println("Warte auf Verbindungen");
                     s = ssock.accept();
                     System.out.println("Verbunden mit:" + s.getLocalAddress());
-                    BasestationSession r = new BasestationSession(in,  out,  s,  data);
-                    a.add(r);
+                    BasestationSession r = new BasestationSession(s,  data);
+                  //  a.add(r);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
