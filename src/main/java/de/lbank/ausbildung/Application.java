@@ -1,0 +1,14 @@
+package de.lbank.ausbildung;
+
+import java.sql.SQLException;
+
+public class Application {
+    public static void main(String[] args) throws SQLException {
+        // TODO Auto-generated method stub
+        BasestationServer fisch = new BasestationServer();
+        fisch.start();
+
+
+    }
+
+}
