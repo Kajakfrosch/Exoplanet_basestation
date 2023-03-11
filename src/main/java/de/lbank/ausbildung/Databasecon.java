@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Databasecon {
     private String database = "exo";
-    private String hostadress = "172.30.145.11";
+    private String hostadress = "127.0.0.1";
     private String username = "exo";
     private String password = "egal";
     private Connection con;
