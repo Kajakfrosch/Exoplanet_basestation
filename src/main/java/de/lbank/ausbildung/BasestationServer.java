@@ -6,83 +6,54 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BasestationServer extends Thread {
-    private BufferedReader in;
-    private PrintWriter out;
-    private Socket s;
-    private RequestListener t;
+    private ServerSocket ssock;
+
     private Databasecon data;
-    private ArrayList<BasestationSession> a;
-    public BasestationServer() {
-        startAction();
+    private ArrayList<BasestationSession> sessions;
 
-    };
+    public BasestationServer() throws IOException {
+        ssock = new ServerSocket(1222);
 
-    public void startAction() {
-        t = new RequestListener(1222);
-        a = new ArrayList<BasestationSession>();
-        t.start();
+        data = new Databasecon();
+        sessions = new ArrayList<>();
 
     }
 
-    public void stopAction() {
-        t.interrupt();
-        try {
-            for (int x=0;x == a.size(); x++) {
-                BasestationSession c = a.get(x);
-                c.interrupt();
-
-            }
-            in.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        in = null;
-        out = null;
-    };
-
-
-
-
-
-    class RequestListener extends Thread {
-
-        private ServerSocket ssock;
-
-        private int port;
-        private BasestationServer b;
-
-        public RequestListener(int port) {
-            this.port = port;
+    @Override
+    public void run() {
+        System.out.println("Waiting for connections...");
+        while (!Thread.interrupted()) {
             try {
-                ssock = new ServerSocket(port);
-                s = ssock.accept();
-
-                data = new Databasecon();
+                Socket s = ssock.accept();
+                BasestationSession session = new BasestationSession(s, data);
+                sessions.add(session);
+                session.start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        stopAction();
+    }
 
-        public void run() {
-            while (!Thread.interrupted()) {
-                try {
-                    System.out.println("Warte auf Verbindungen");
-                    s = ssock.accept();
-                    System.out.println("Verbunden mit:" + s.getLocalAddress());
-                    BasestationSession r = new BasestationSession(s,  data);
-                  //  a.add(r);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+    public void stopAction() {
+        for (BasestationSession session : sessions) {
+            session.interrupt();
+        }
+        sessions.clear();
+        try {
+            ssock.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
+
 }

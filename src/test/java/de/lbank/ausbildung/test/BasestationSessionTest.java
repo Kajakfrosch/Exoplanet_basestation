@@ -1,5 +1,8 @@
+package de.lbank.ausbildung.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,14 +11,20 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import de.lbank.ausbildung.BasestationSession;
-import de.lbank.ausbildung.Databasecon;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.lbank.ausbildung.BasestationServer;
+import de.lbank.ausbildung.BasestationSession;
+import de.lbank.ausbildung.Databasecon;
+
 public class BasestationSessionTest {
 
+    private static final int PORT = 1222;
+    private static final String HOST = "localhost";
+
+    private BasestationServer server;
     private Socket clientSocket;
     private BufferedReader in;
     private PrintWriter out;
@@ -23,20 +32,20 @@ public class BasestationSessionTest {
 
     @Before
     public void setUp() throws Exception {
-
-        clientSocket = new Socket("localhost", 1222);
+        server = new BasestationServer();
+        new Thread(server::start).start();
+        clientSocket = new Socket(HOST, PORT);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         out = new PrintWriter(clientSocket.getOutputStream(), true);
-        Databasecon data = new Databasecon();
-        session = new BasestationSession(clientSocket, data);
-        session.start();
+        session = new BasestationSession(clientSocket,new Databasecon());
     }
 
     @After
     public void tearDown() throws Exception {
-        session.interrupt();
+        in.close();
+        out.close();
         clientSocket.close();
-
+        server.stop();
     }
 
     @Test
@@ -44,7 +53,7 @@ public class BasestationSessionTest {
         out.println("initworld|world1|10|10|robot1");
         out.flush();
         String response = in.readLine();
-        assertEquals("robot1", response);
+        assertEquals("1001", response);
     }
 
     @Test
@@ -60,15 +69,21 @@ public class BasestationSessionTest {
         out.println("saveMessdaten|1|1|robot1|25.0|grassy");
         out.flush();
         String response = in.readLine();
-        assertTrue(response.startsWith("1 row inserted"));
+        assertTrue(response.startsWith("1003"));
     }
-
+    @Test
+    public void testInsertRobot() throws IOException {
+        out.println("insertRobot|1|1|robot1");
+        out.flush();
+        String response = in.readLine();
+        assertTrue(response.startsWith("1003"));
+    }
     @Test
     public void testIsChunkFree() throws IOException {
         out.println("isChunkFree|1|1|robot1");
         out.flush();
         String response = in.readLine();
-        assertEquals("OK", response);
+        assertEquals("1005", response);
     }
 
     @Test

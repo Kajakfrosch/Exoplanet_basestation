@@ -1,4 +1,4 @@
-
+package de.lbank.ausbildung.test;
 
 import de.lbank.ausbildung.BasestationServer;
 import org.junit.After;
@@ -15,7 +15,7 @@ public class BasestationServerTest {
     private  BasestationServer fisch;
 
     @Before
-    public void setUp()  {
+    public void setUp() throws IOException {
         fisch = new BasestationServer();
         fisch.start();
 

@@ -11,7 +11,7 @@ public class BasestationSession extends Thread{
     private BufferedReader in;
     private PrintWriter out;
     private Socket s;
-    private BasestationSession t;
+
     private Databasecon data;
 
     public BasestationSession( Socket s,  Databasecon data) throws IOException {
@@ -20,7 +20,7 @@ public class BasestationSession extends Thread{
         this.data = data;
         in = new BufferedReader(new InputStreamReader(s.getInputStream()));
         out = new PrintWriter(s.getOutputStream());
-       t.start();
+
     }
 
     public boolean initworld(String worldname, int hoehe, int breite, String robotnername) {
@@ -52,6 +52,7 @@ public class BasestationSession extends Thread{
     public boolean saveMessdaten(int posx, int posy, String robotername, double temp, String bodenbeschaffenheit) {
         try {
             String saveMessdaten = data.insertdataMessdaten(posx, posy, robotername, temp, bodenbeschaffenheit);
+            sendtext(saveMessdaten);
             return true;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
