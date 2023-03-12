@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="582faea9-4aa6-48d5-8c43-6d046f460b28" name="Changes" comment="Maven Bastionservice with Tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/lbank/ausbildung/BasestationSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BasestationServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/lbank/ausbildung/test/BasestationServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BasestationSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/lbank/ausbildung/test/BasestationSessionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/de/lbank/ausbildung/test/BasestationSessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/de/lbank/ausbildung/test/BasestationSessionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +42,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kajak/IdeaProjects/Exoplanet_basestation&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in Exoplanet_basestation">
     <configuration name="All in Exoplanet_basestation" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="Exoplanet_basestation" />
       <option name="PACKAGE_NAME" value="" />
@@ -108,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678547548391</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Maven Bastionservice with Tests">
+      <created>1678620558614</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678620558614</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +132,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationSessionTest.ic" NAME="BasestationSessionTest Coverage Results" MODIFIED="1678547426663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationServerTest.ic" NAME="BasestationServerTest Coverage Results" MODIFIED="1678547489747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Exoplanet_basestation$All_in_Exoplanet_basestation.ic" NAME="All in Exoplanet_basestation Coverage Results" MODIFIED="1678620310263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Exoplanet_basestation$BasestationServerTest.ic" NAME="BasestationServerTest Coverage Results" MODIFIED="1678620526547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>de.lbank.ausbildung.test.*</FILTER>
+    </SUITE>
   </component>
 </project>
