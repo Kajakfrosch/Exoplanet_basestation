@@ -85,14 +85,16 @@ public class BasestationSession extends Thread{
         while(!Thread.interrupted()) {
             try {
                 String read = in.readLine();
-
+                System.out.println(read);
                 String[] token = read.trim().split("\\|");
                 switch(token[0]) {
                     case "initworld":
                         initworld(token[1],Integer.parseInt(token[2]), Integer.parseInt(token[3]), token[4]);
                         break;
                     case "updateKoordinaten":
-                        updateKoordinaten(Integer.parseInt(token[1]), Integer.parseInt(token[2]), token[3], token[4], token[5]);
+                        String Direktion = token[4];
+                        char firstChar = Direktion.charAt(0);
+                        updateKoordinaten(Integer.parseInt(token[1]), Integer.parseInt(token[2]), token[3],String.valueOf(firstChar), token[5]);
                         break;
                     case "saveMessdaten":
                         saveMessdaten(Integer.parseInt(token[1]), Integer.parseInt(token[2]), token[3], Double.parseDouble(token[4]), token[5]);
@@ -112,6 +114,8 @@ public class BasestationSession extends Thread{
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+               System.out.println( e.getCause());
+                this.interrupt();
             }}
 
     }

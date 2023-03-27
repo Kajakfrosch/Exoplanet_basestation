@@ -33,8 +33,10 @@ public class BasestationServer extends Thread {
             try {
                 Socket s = ssock.accept();
                 BasestationSession session = new BasestationSession(s, data);
+                System.out.println("find Connection");
                 sessions.add(session);
                 session.start();
+                System.out.println("Waiting for connections...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
