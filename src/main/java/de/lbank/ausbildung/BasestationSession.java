@@ -13,6 +13,8 @@ public class BasestationSession extends Thread{
     private Socket s;
 
     private Databasecon data;
+    private String robotername;
+    private String worldname;
 
     public BasestationSession( Socket s,  Databasecon data) throws IOException {
 
@@ -28,6 +30,8 @@ public class BasestationSession extends Thread{
 
             data.insertWorld(worldname, hoehe, breite);
             String roboter = data.insertRobot(robotnername);
+            this.robotername = robotnername;
+            this.worldname = worldname;
             sendtext(roboter);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -71,6 +75,7 @@ public class BasestationSession extends Thread{
     public boolean crashedRoboter(String robotername) {
         try {
             data.updateKoordinaten(-1, -1, robotername, "F", "UNKOWN");
+
             return true;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -79,13 +84,18 @@ public class BasestationSession extends Thread{
         }
 
     }
+    public void stopaction(){
+        crashedRoboter(robotername);
+        this.interrupt();
+        out.close();
+    }
 
     @Override
     public void run() {
         while(!Thread.interrupted()) {
             try {
                 String read = in.readLine();
-                System.out.println(read);
+                System.out.println("Roboter:write:"+robotername+":"+read);
                 String[] token = read.trim().split("\\|");
                 switch(token[0]) {
                     case "initworld":
@@ -114,8 +124,7 @@ public class BasestationSession extends Thread{
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-               System.out.println( e.getCause());
-                this.interrupt();
+                stopaction();
             }}
 
     }

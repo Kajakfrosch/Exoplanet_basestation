@@ -7,7 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class BasestationServerTest {
@@ -31,9 +34,14 @@ public class BasestationServerTest {
     @Test
     public void testServerConnection() throws IOException {
         // Verbindung zum Server aufbauen
-        Socket clientSocket = new Socket("localhost", 1222);
+        Socket clientSocket = new Socket("localhost", 6000);
+        BufferedReader t = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        PrintWriter c = new PrintWriter(clientSocket.getOutputStream(),true);
+        c.println("orbit|robotername");
+
         // Überprüfen, ob Verbindung aufgebaut wurde
         Assert.assertTrue(clientSocket.isConnected());
+
         // Verbindung schließen
         clientSocket.close();
     }

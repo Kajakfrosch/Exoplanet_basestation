@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Databasecon {
     private String database = "exo";
-    private String hostadress = "127.0.0.1";
+    private String hostadress = "172.30.145.11";
     private String username = "exo";
     private String password = "egal";
     private Connection con;
@@ -32,7 +32,7 @@ public class Databasecon {
 
     public String insertdataMessdaten(int posx, int posy, String robotername, double temp, String bodenbeschaffenheit)
             throws SQLException {
-        String roboterID;
+        String roboterID = null;
         ResultSet rs = stmt.executeQuery("Select rid from roboter where beschreibung='"+robotername+"'");
         while (rs.next()) {
             try {
@@ -45,7 +45,7 @@ public class Databasecon {
             }
         }
 
-        String sql = "Insert INTO Measure (msid,rid,groundtype,ptemp,x,y) VALUES('1','1','"+bodenbeschaffenheit+"',"+temp+","+posx+","+posy+")";
+        String sql = "Insert INTO Measure (rid,groundtype,ptemp,x,y) VALUES('"+roboterID+"','"+bodenbeschaffenheit+"',"+temp+","+posx+","+posy+")";
         try {
             stmt.execute(sql);
         } catch (SQLException e) {
@@ -74,7 +74,7 @@ public class Databasecon {
                         + "beim der Methode initWorld";
             }
         }
-        String sql = "Insert INTO world (wid,pname,pwidth,pheight) VALUES('20','"+worldname+"',"+breite+","+hoehe+")";
+        String sql = "Insert INTO world (pname,pwidth,pheight) VALUES('"+worldname+"',"+breite+","+hoehe+")";
         try {
             stmt.execute(sql);
         } catch (SQLException e) {
@@ -87,7 +87,7 @@ public class Databasecon {
 
     }
     public String insertRobot(String Robotname) throws SQLException {
-        String Robotid;
+        String Robotid = null;
         ResultSet rs;
 
         rs = stmt.executeQuery("Select rid from roboter where beschreibung='"+Robotname+"'");
@@ -104,7 +104,7 @@ public class Databasecon {
                         + "beim der Methode initWorld";
             }
         }
-        String sql = "Insert INTO roboter (rid,beschreibung) VALUES('2000','"+Robotname+"')";
+        String sql = "Insert INTO roboter (beschreibung) VALUES('"+Robotname+"')";
         try {
             stmt.execute(sql);
         } catch (SQLException e) {

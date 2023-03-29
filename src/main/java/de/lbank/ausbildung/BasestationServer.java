@@ -19,7 +19,7 @@ public class BasestationServer extends Thread {
     private ArrayList<BasestationSession> sessions;
 
     public BasestationServer() throws IOException {
-        ssock = new ServerSocket(1222);
+        ssock = new ServerSocket(6000);
 
         data = new Databasecon();
         sessions = new ArrayList<>();
@@ -47,6 +47,7 @@ public class BasestationServer extends Thread {
     public void stopAction() {
         for (BasestationSession session : sessions) {
             session.interrupt();
+            session.stopaction();
         }
         sessions.clear();
         try {
