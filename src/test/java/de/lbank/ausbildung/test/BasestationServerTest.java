@@ -35,9 +35,7 @@ public class BasestationServerTest {
     public void testServerConnection() throws IOException {
         // Verbindung zum Server aufbauen
         Socket clientSocket = new Socket("localhost", 6000);
-        BufferedReader t = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        PrintWriter c = new PrintWriter(clientSocket.getOutputStream(),true);
-        c.println("orbit|robotername");
+
 
         // Überprüfen, ob Verbindung aufgebaut wurde
         Assert.assertTrue(clientSocket.isConnected());

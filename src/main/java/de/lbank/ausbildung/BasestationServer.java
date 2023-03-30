@@ -18,6 +18,10 @@ public class BasestationServer extends Thread {
     private Databasecon data;
     private ArrayList<BasestationSession> sessions;
 
+    /**
+     * Startet den BasestationServer
+     * @throws IOException
+     */
     public BasestationServer() throws IOException {
         ssock = new ServerSocket(6000);
 
@@ -27,23 +31,31 @@ public class BasestationServer extends Thread {
     }
 
     @Override
+    /**
+     * run() wartet auf Verbindungen.
+     *Wenn eine Verbindung zustande kommt, wird eine neue BasisstationSession eröffnet und in eine Liste gespeichert.
+     */
     public void run() {
-        System.out.println("Waiting for connections...");
+        System.out.println("Warten auf Verbindungen...");
         while (!Thread.interrupted()) {
             try {
                 Socket s = ssock.accept();
                 BasestationSession session = new BasestationSession(s, data);
-                System.out.println("find Connection");
+                System.out.println("Verbindung aufgebaut");
                 sessions.add(session);
                 session.start();
-                System.out.println("Waiting for connections...");
+                System.out.println("Warten auf Verbindungen...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         stopAction();
     }
-
+    /**
+     * Stoppt den Basisstation Server und alle BasisstationSession Thread.
+     *
+     * @return nichts
+     */
     public void stopAction() {
         for (BasestationSession session : sessions) {
             session.interrupt();
