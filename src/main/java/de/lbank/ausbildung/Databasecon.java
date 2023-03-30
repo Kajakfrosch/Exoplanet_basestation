@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Databasecon {
     private String database = "exo";
-    private String hostadress = "172.30.145.11";
+    private String hostadress = "127.0.0.1";
     private String username = "exo";
     private String password = "egal";
     private Connection con;
@@ -123,24 +123,37 @@ public class Databasecon {
     }
     public String checkKoordinaten(int posx, int posy,String Robotername) {
         ResultSet rs;
-        String fieldclear;
+        String fieldclear = null;
 
         try {
-            rs = stmt.executeQuery("Select rid From Roboter WHERE beschreibung!='"+Robotername+"' AND x='"+posx+"'AND y='"+posy+"'");
+            rs = stmt.executeQuery("Select rid From Roboter WHERE beschreibung!='" + Robotername + "' AND x='" + posx + "'AND y='" + posy + "'");
             while (rs.next()) {
 
                 fieldclear = rs.getString(1);
                 System.out.println(fieldclear);
-                if(fieldclear == null) {
+                if (fieldclear == null) {
                     System.out.println("Sie können weiterfahren");
-                    return "1004";}else System.out.println("der Platz ist bereits belegt");
+                    return "1005";
+                } else {
+                    System.out.println("der Platz ist bereits belegt");
+                    return "1004";
+                }
 
+
+            }
+            if (fieldclear == null) {
+                System.out.println("Sie können weiterfahren");
+                return "1005";
+            }else {
+                System.out.println("der Platz ist bereits belegt");
+                return "1004";
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return "1005";
 
+
+        return null;
     }
 }
